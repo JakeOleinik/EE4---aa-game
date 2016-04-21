@@ -18,14 +18,15 @@
 /** P R I V A T E   V A R I A B L E S *******************************/
 static unsigned int note_new = 0, note_win = 0;
 static unsigned char was_released;
-static unsigned char hard_speed, hard_speed_timer;
-static char stepper_direction;
+static unsigned int hard_speed_timer;
+static float hard_speed;
+static int stepper_direction;
 static unsigned char prev_hall;
 static unsigned char LEDs[16];
 static unsigned char target;
 static int position;
 static float steps_per_led;
-static const unsigned int total_steps = 400;
+static const unsigned int total_steps = 800;
 static const unsigned int last_new_note = sizeof(ImperialMarchNotes)/sizeof(ImperialMarchNotes[0]);
 static const unsigned int last_win_note = sizeof(SuperMarioNotes)/sizeof(SuperMarioNotes[0]);
 static enum {CALIBRATION,
@@ -43,7 +44,7 @@ static enum {CALIBRATION,
 static void init(void);
 static void fsm(void);
 static void multiplex(void);
-static void stepper_pulse(unsigned char);
+static void stepper_pulse(float);
 static void setAllLeds(unsigned char);
 
 
@@ -61,8 +62,7 @@ void main(void) {
     while(1) {  
         fsm();
         multiplex();
-        //LATAbits.LATA1 =  PORTAbits.RA5;
-    }
+        }
 }
 
 /********************************************************************/
@@ -70,8 +70,6 @@ void main(void) {
 /********************************************************************/
 
 static void init(void) {
-	//configure I/O
-    // 0 => out
 	TRISCbits.TRISC6 = 0; //PULSE
     TRISCbits.TRISC7 = 0; //DIRECTION
     TRISBbits.TRISB0 = 1; //DIFFICULTY TOGGLE
@@ -106,9 +104,9 @@ static void init(void) {
 	
     note_new = 0;
     note_win = 0;
-    hard_speed = 1;
-    hard_speed_timer = 100;
-    stepper_direction = 1;
+    hard_speed = 1.0;
+    hard_speed_timer = 500;
+    stepper_direction = 1;  // CW
     steps_per_led = total_steps/16;
     hardware_init();   
     prev_hall = PORTAbits.RA5;
@@ -124,7 +122,7 @@ static void fsm(void) {
             //transition
             if (PORTAbits.RA5 != prev_hall) {
                 //prev_hall = PORTAbits.RA5;
-                position = 0; //might require offset ifo 
+                position = 0; //might require offset 
                 current_state = NEW_GAME;                
             }
             
@@ -142,20 +140,20 @@ static void fsm(void) {
             note_new++;
           
         // *** transitions ***
-            if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 1) {
+            if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 0) {
                 current_state = MOVE_HARD;
                 setAllLeds(0);
             }
-            else if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 0) {
-                current_state = MOVE_EASY;
-                setAllLeds(0);
-            }
+            else
+                if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 1) {
+                    current_state = MOVE_EASY;
+                    setAllLeds(0);
+                }
 
             break;
         
         case MOVE_EASY :
             
-            LATCbits.LATC7 = 0;
             stepper_pulse(1);
             
             if (PORTAbits.RA4 == 0) {
@@ -171,7 +169,6 @@ static void fsm(void) {
         
         case MOVE_HARD :
             
-            //RC7 = hard_dir can be set in change_speed
             stepper_pulse(hard_speed);
             hard_speed_timer--;
             
@@ -199,10 +196,10 @@ static void fsm(void) {
             
             was_released = TRUE;
             
-            if (PORTBbits.RB0 == 1) {
+            if (PORTBbits.RB0 == 1) 
+                current_state = MOVE_EASY;
+            else
                 current_state = MOVE_HARD;
-            }
-            else current_state = MOVE_EASY;
             break;
             
         case LIGHT_UP:
@@ -211,7 +208,7 @@ static void fsm(void) {
             char i = 0;
             for (i = 0; i <= 15; i++) {
                 if (LEDs[i] == 0) {
-                    if (PORTBbits.RB0 == 0) 
+                    if (PORTBbits.RB0 == 1) 
                         current_state = MOVE_EASY;
                     else 
                         current_state = MOVE_HARD;
@@ -224,17 +221,14 @@ static void fsm(void) {
 
         case CHANGE_SPEED :
             
-            if (rand()%2 ==0) {
-                stepper_direction = -1;
-                LATCbits.LATC7 = 1;
-            }
-            else {
+            if (rand()*2 >= 1) 
                 stepper_direction = 1;
-                LATCbits.LATC7 = 0;
-            }
+            else 
+                stepper_direction = -1;
             
-            hard_speed_timer = rand()%500+100;
-            hard_speed = rand()%10+1;
+            
+            hard_speed_timer = rand()%2000+100;
+            hard_speed = rand()%2;
             
             current_state = MOVE_HARD;
             break;
@@ -284,16 +278,21 @@ static void fsm(void) {
     
 }
 
-static void stepper_pulse(unsigned char speed) {
+static void stepper_pulse(float speed) {
+    if (stepper_direction > 0)
+        LATCbits.LATC7 = 0;
+    else
+        LATCbits.LATC7 = 1;
+    
     LATCbits.LATC6 = 1;
-    //wait(1/speed); //or 1-0.x*speed
-    myDelay_us((int)200/speed);
+    myDelay_us((int)(250/speed));
     LATCbits.LATC6 = 0;
-    myDelay_us((int)200/speed);
+    myDelay_us((int)(250/speed));
 
     position+= stepper_direction;
-    if (position == 65535)
-        position = total_steps-1;
+    while (position < 0)
+        position+=total_steps;
+        //position = total_steps-1;
     
     position%=total_steps;
 }
