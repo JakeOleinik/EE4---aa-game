@@ -4634,14 +4634,14 @@ void initBuzz(void);
 
 void happyBirthday(void);
 
-void nothingElseMatters(void);
+void nothingElseMatters(unsigned int index);
 
 void superMario(unsigned int index);
 
 void starWars(unsigned int index);
 
 
-unsigned int SuperMarioNotes[] = {
+unsigned int superMarioNotes[] = {
 2637, 2637, 0, 2637,
 0, 2093, 2637, 0,
 3136, 0, 0, 0,
@@ -4669,7 +4669,7 @@ unsigned int SuperMarioNotes[] = {
 };
 
 
-unsigned int SuperMarioDurations[] = {
+unsigned int superMarioDurations[] = {
 12, 12, 12, 12,
 12, 12, 12, 12,
 12, 12, 12, 12,
@@ -4697,19 +4697,38 @@ unsigned int SuperMarioDurations[] = {
 };
 
 
-unsigned int ImperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
+unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
 349, 0, 523, 0, 440, 0,
 349, 0, 523, 0, 440, 0,
 659, 0, 659, 0, 659, 0,
 698, 0, 523, 0, 440, 0,
 349, 0, 523, 0, 440, 0};
 
-unsigned int ImperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
+unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
 40, 5, 20, 5, 60, 10,
 40, 5, 20, 5, 60, 80,
 50, 20, 50, 20, 50, 20,
 40, 5, 20, 5, 60, 10,
 40, 5, 20, 5, 60, 80};
+
+unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
+
+unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 494,
+330, 494, 330, 165, 494, 262, 494, 440,
+494, 440, 330
+
+};
+unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+16, 2, 8, 8, 2, 4, 4, 4,
+4, 4, 4
+};
 
 # 13 "songs.c"
 void myDelay_us(unsigned int us) {
@@ -4747,16 +4766,24 @@ TRISAbits.TRISA3 = 0;
 hardware_init();
 }
 
-# 103
-void superMario(unsigned int index) {
-buzz(SuperMarioNotes[index], 1000/SuperMarioDurations[index]);
+# 77
+void nothingElseMatters(unsigned int index) {
+buzz(nothingElseMattersNotes[index], 70*nothingElseMattersDurations[index]);
 buzz(0, 20);
 
-# 114
+# 87
+}
+
+
+void superMario(unsigned int index) {
+buzz(superMarioNotes[index], 1000/superMarioDurations[index]);
+buzz(0, 20);
+
+# 101
 }
 
 void starWars(unsigned int index) {
-buzz(ImperialMarchNotes[index], 4*ImperialMarchDurations[index]);
+buzz(imperialMarchNotes[index], 4*imperialMarchDurations[index]);
 
-# 126
+# 113
 }

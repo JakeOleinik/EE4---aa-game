@@ -18,14 +18,14 @@ void initBuzz(void);
 
 void happyBirthday(void);
 
-void nothingElseMatters(void);
+void nothingElseMatters(unsigned int index);
 
 void superMario(unsigned int index);
 
 void starWars(unsigned int index);
 
 
-unsigned int SuperMarioNotes[] = {
+unsigned int superMarioNotes[] = {
         NOTE_E7, NOTE_E7, 0, NOTE_E7,
         0, NOTE_C7, NOTE_E7, 0,
         NOTE_G7, 0, 0,  0,
@@ -53,7 +53,7 @@ unsigned int SuperMarioNotes[] = {
         };
 
 
-unsigned int SuperMarioDurations[] = {
+unsigned int superMarioDurations[] = {
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
@@ -81,21 +81,38 @@ unsigned int SuperMarioDurations[] = {
 };
 
 
-unsigned int ImperialMarchNotes[] = {  NOTE_A4, 0,  NOTE_A4, 0,  NOTE_A4, 0,
+unsigned int imperialMarchNotes[] = {  NOTE_A4, 0,  NOTE_A4, 0,  NOTE_A4, 0,
                                        NOTE_F4, 0, NOTE_C5, 0,  NOTE_A4, 0,
                                        NOTE_F4, 0, NOTE_C5, 0, NOTE_A4, 0,
                                        NOTE_E5, 0, NOTE_E5, 0,  NOTE_E5, 0,
                                        NOTE_F5, 0, NOTE_C5, 0,  NOTE_A4, 0,
                                        NOTE_F4, 0,  NOTE_C5, 0, NOTE_A4, 0};
 
-unsigned int ImperialMarchDurations[]  = {50, 20, 50, 20, 50, 20,
+unsigned int imperialMarchDurations[]  = {50, 20, 50, 20, 50, 20,
                                           40, 5, 20, 5,  60, 10,
                                           40, 5, 20, 5, 60, 80,
                                           50, 20, 50, 20, 50, 20,
                                           40, 5, 20, 5,  60, 10,
                                           40, 5,  20, 5, 60, 80};
 
+unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
 
+unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+                            165, 196, 245, 330, 245, 196,
+                            165, 196, 245, 330, 245, 196,
+                            165, 196, 245, 330, 245, 494,
+                            330, 494, 330, 165, 494, 262, 494, 440,
+                            494, 440, 330
+    
+};
+unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
+                               4, 4, 4, 4, 4, 4,
+                               4, 4, 4, 4, 4, 4,
+                               4, 4, 4, 4, 4, 4,
+                               16, 2, 8, 8, 2, 4, 4, 4,
+                               4, 4, 4
+};
 
 
 #ifdef	__cplusplus

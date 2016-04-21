@@ -4,7 +4,7 @@
 [d chip 18F2550 ]
 [d frameptr 4065 ]
 "41 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
-[e E3965 . `uc
+[e E3969 . `uc
 CALIBRATION 0
 NEW_GAME 1
 MOVE_EASY 2
@@ -56,6 +56,8 @@ GAME_LOST 9
 [v ___fldiv __fldiv `(d  1 e 3 0 ]
 "8 /Applications/microchip/xc8/v1.36/sources/common/sprcmul.c
 [v ___flmul __flmul `(d  1 e 3 0 ]
+"15 /Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 /Applications/microchip/xc8/v1.36/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "39 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/config.c
@@ -86,10 +88,10 @@ GAME_LOST 9
 [v _myDelay_ms myDelay_ms `(v  1 e 1 0 ]
 "26
 [v _buzz buzz `(v  1 e 1 0 ]
-"103
+"77
+[v _nothingElseMatters nothingElseMatters `(v  1 e 1 0 ]
+"90
 [v _superMario superMario `(v  1 e 1 0 ]
-"116
-[v _starWars starWars `(v  1 e 1 0 ]
 [s S573 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
@@ -433,16 +435,20 @@ GAME_LOST 9
 "31
 [v _last_win_note last_win_note `Cui  1 s 2 last_win_note ]
 "41
-[v _current_state current_state `E3965  1 s 1 current_state ]
-[v _state_to_recover state_to_recover `E3965  1 s 1 state_to_recover ]
+[v _current_state current_state `E3969  1 s 1 current_state ]
+[v _state_to_recover state_to_recover `E3969  1 s 1 state_to_recover ]
 "28 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.h
-[v _SuperMarioNotes SuperMarioNotes `[78]ui  1 e 156 0 ]
+[v _superMarioNotes superMarioNotes `[78]ui  1 e 156 0 ]
 "56
-[v _SuperMarioDurations SuperMarioDurations `[78]ui  1 e 156 0 ]
+[v _superMarioDurations superMarioDurations `[78]ui  1 e 156 0 ]
 "84
-[v _ImperialMarchNotes ImperialMarchNotes `[36]ui  1 e 72 0 ]
+[v _imperialMarchNotes imperialMarchNotes `[36]ui  1 e 72 0 ]
 "91
-[v _ImperialMarchDurations ImperialMarchDurations `[36]ui  1 e 72 0 ]
+[v _imperialMarchDurations imperialMarchDurations `[36]ui  1 e 72 0 ]
+"98
+[v _nothingElseMattersNotes nothingElseMattersNotes `[6]ui  1 e 12 0 ]
+"99
+[v _nothingElseMattersDurations nothingElseMattersDurations `[6]ui  1 e 12 0 ]
 "60 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _main main `(v  1 e 1 0 ]
 {
@@ -489,16 +495,16 @@ GAME_LOST 9
 [v _fsm fsm `(v  1 s 1 fsm ]
 {
 "240
-[v fsm@i_968 i `uc  1 a 1 24 ]
+[v fsm@i_972 i `uc  1 a 1 22 ]
 "208
-[v fsm@i i `uc  1 a 1 23 ]
+[v fsm@i i `uc  1 a 1 21 ]
 "279
 } 0
-"103 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
+"90 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
 [v _superMario superMario `(v  1 e 1 0 ]
 {
 [v superMario@index index `ui  1 p 2 68 ]
-"114
+"101
 } 0
 "8 /Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
@@ -528,11 +534,27 @@ GAME_LOST 9
 [v ___lwmod@divisor divisor `ui  1 p 2 16 ]
 "26
 } 0
-"116 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
-[v _starWars starWars `(v  1 e 1 0 ]
+"332 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+[v _setAllLeds setAllLeds `(v  1 s 1 setAllLeds ]
 {
-[v starWars@index index `ui  1 p 2 68 ]
-"126
+[v setAllLeds@value value `uc  1 a 1 wreg ]
+"333
+[v setAllLeds@i i `uc  1 a 1 15 ]
+"332
+[v setAllLeds@value value `uc  1 a 1 wreg ]
+[v setAllLeds@value value `uc  1 a 1 14 ]
+"335
+} 0
+"12 /Applications/microchip/xc8/v1.36/sources/common/rand.c
+[v _rand rand `(i  1 e 2 0 ]
+{
+"17
+} 0
+"77 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
+[v _nothingElseMatters nothingElseMatters `(v  1 e 1 0 ]
+{
+[v nothingElseMatters@index index `ui  1 p 2 68 ]
+"87
 } 0
 "26
 [v _buzz buzz `(v  1 e 1 0 ]
@@ -565,6 +587,16 @@ GAME_LOST 9
 "19
 [v myDelay_ms@ms ms `ui  1 p 2 14 ]
 "23
+} 0
+"15 /Applications/microchip/xc8/v1.36/sources/common/Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+{
+"17
+[v ___lmul@product product `ul  1 a 4 22 ]
+"15
+[v ___lmul@multiplier multiplier `ul  1 p 4 14 ]
+[v ___lmul@multiplicand multiplicand `ul  1 p 4 18 ]
+"129
 } 0
 "44 /Applications/microchip/xc8/v1.36/sources/common/fttol.c
 [v ___fttol __fttol `(l  1 e 4 0 ]
@@ -615,31 +647,15 @@ GAME_LOST 9
 [v ___aldiv@divisor divisor `l  1 p 4 30 ]
 "42
 } 0
-"332 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
-[v _setAllLeds setAllLeds `(v  1 s 1 setAllLeds ]
-{
-[v setAllLeds@value value `uc  1 a 1 wreg ]
-"333
-[v setAllLeds@i i `uc  1 a 1 15 ]
-"332
-[v setAllLeds@value value `uc  1 a 1 wreg ]
-[v setAllLeds@value value `uc  1 a 1 14 ]
-"335
-} 0
-"12 /Applications/microchip/xc8/v1.36/sources/common/rand.c
-[v _rand rand `(i  1 e 2 0 ]
+"15 /Applications/microchip/xc8/v1.36/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-} 0
-"15 /Applications/microchip/xc8/v1.36/sources/common/Umul32.c
-[v ___lmul __lmul `(ul  1 e 4 0 ]
-{
-"17
-[v ___lmul@product product `ul  1 a 4 22 ]
+[v ___wmul@product product `ui  1 a 2 18 ]
 "15
-[v ___lmul@multiplier multiplier `ul  1 p 4 14 ]
-[v ___lmul@multiplicand multiplicand `ul  1 p 4 18 ]
-"129
+[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
+"53
 } 0
 "27 /Applications/microchip/xc8/v1.36/sources/common/lbtoft.c
 [v ___lbtoft __lbtoft `(f  1 e 3 0 ]

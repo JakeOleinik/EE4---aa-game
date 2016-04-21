@@ -3580,12 +3580,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 15: void buzz(long freq, unsigned int duration);
 [; ;songs.h: 17: void initBuzz(void);
 [; ;songs.h: 19: void happyBirthday(void);
-[; ;songs.h: 21: void nothingElseMatters(void);
+[; ;songs.h: 21: void nothingElseMatters(unsigned int index);
 [; ;songs.h: 23: void superMario(unsigned int index);
 [; ;songs.h: 25: void starWars(unsigned int index);
 "28 songs.h
-[v _SuperMarioNotes `ui ~T0 @X0 -> 0 `x e ]
-[i _SuperMarioNotes
+[v _superMarioNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _superMarioNotes
 :U ..
 "29
 -> -> 2637 `i `ui
@@ -3688,7 +3688,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ..
 ]
-[; ;songs.h: 28: unsigned int SuperMarioNotes[] = {
+[; ;songs.h: 28: unsigned int superMarioNotes[] = {
 [; ;songs.h: 29: 2637, 2637, 0, 2637,
 [; ;songs.h: 30: 0, 2093, 2637, 0,
 [; ;songs.h: 31: 3136, 0, 0, 0,
@@ -3711,8 +3711,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 52: 2349, 1976, 0, 0
 [; ;songs.h: 53: };
 "56
-[v _SuperMarioDurations `ui ~T0 @X0 -> 0 `x e ]
-[i _SuperMarioDurations
+[v _superMarioDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _superMarioDurations
 :U ..
 "57
 -> -> 12 `i `ui
@@ -3814,7 +3814,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `ui
 ..
 ]
-[; ;songs.h: 56: unsigned int SuperMarioDurations[] = {
+[; ;songs.h: 56: unsigned int superMarioDurations[] = {
 [; ;songs.h: 57: 12, 12, 12, 12,
 [; ;songs.h: 58: 12, 12, 12, 12,
 [; ;songs.h: 59: 12, 12, 12, 12,
@@ -3837,8 +3837,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 80: 12, 12, 12, 12,
 [; ;songs.h: 81: };
 "84
-[v _ImperialMarchNotes `ui ~T0 @X0 -> 0 `x e ]
-[i _ImperialMarchNotes
+[v _imperialMarchNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _imperialMarchNotes
 :U ..
 -> -> 440 `i `ui
 -> -> 0 `i `ui
@@ -3883,15 +3883,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ..
 ]
-[; ;songs.h: 84: unsigned int ImperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
+[; ;songs.h: 84: unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
 [; ;songs.h: 85: 349, 0, 523, 0, 440, 0,
 [; ;songs.h: 86: 349, 0, 523, 0, 440, 0,
 [; ;songs.h: 87: 659, 0, 659, 0, 659, 0,
 [; ;songs.h: 88: 698, 0, 523, 0, 440, 0,
 [; ;songs.h: 89: 349, 0, 523, 0, 440, 0};
 "91
-[v _ImperialMarchDurations `ui ~T0 @X0 -> 0 `x e ]
-[i _ImperialMarchDurations
+[v _imperialMarchDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _imperialMarchDurations
 :U ..
 -> -> 50 `i `ui
 -> -> 20 `i `ui
@@ -3936,12 +3936,146 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 80 `i `ui
 ..
 ]
-[; ;songs.h: 91: unsigned int ImperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
+[; ;songs.h: 91: unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
 [; ;songs.h: 92: 40, 5, 20, 5, 60, 10,
 [; ;songs.h: 93: 40, 5, 20, 5, 60, 80,
 [; ;songs.h: 94: 50, 20, 50, 20, 50, 20,
 [; ;songs.h: 95: 40, 5, 20, 5, 60, 10,
 [; ;songs.h: 96: 40, 5, 20, 5, 60, 80};
+"98
+[v _nothingElseMattersNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersNotes
+:U ..
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+..
+]
+[; ;songs.h: 98: unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+"99
+[v _nothingElseMattersDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersDurations
+:U ..
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+..
+]
+[; ;songs.h: 99: unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
+"101
+[v _nothingElseMattersFullNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersFullNotes
+:U ..
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"102
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"103
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"104
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 494 `i `ui
+"105
+-> -> 330 `i `ui
+-> -> 494 `i `ui
+-> -> 330 `i `ui
+-> -> 165 `i `ui
+-> -> 494 `i `ui
+-> -> 262 `i `ui
+-> -> 494 `i `ui
+-> -> 440 `i `ui
+"106
+-> -> 494 `i `ui
+-> -> 440 `i `ui
+"108
+-> -> 330 `i `ui
+..
+]
+[; ;songs.h: 101: unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+[; ;songs.h: 102: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 103: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 104: 165, 196, 245, 330, 245, 494,
+[; ;songs.h: 105: 330, 494, 330, 165, 494, 262, 494, 440,
+[; ;songs.h: 106: 494, 440, 330
+[; ;songs.h: 108: };
+"109
+[v _nothingElseMattersFullDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersFullDurations
+:U ..
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"110
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"111
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"112
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"113
+-> -> 16 `i `ui
+-> -> 2 `i `ui
+-> -> 8 `i `ui
+-> -> 8 `i `ui
+-> -> 2 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"114
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"115
+-> -> 4 `i `ui
+..
+]
+[; ;songs.h: 109: unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
+[; ;songs.h: 110: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 111: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 112: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 113: 16, 2, 8, 8, 2, 4, 4, 4,
+[; ;songs.h: 114: 4, 4, 4
+[; ;songs.h: 115: };
 "13 songs.c
 [v _myDelay_us `(v ~T0 @X0 1 ef1`ui ]
 {
@@ -4078,34 +4212,51 @@ Version 3.2 HI-TECH Software Intermediate Code
 "46
 [e :UE 483 ]
 }
-"103
+"77
+[v _nothingElseMatters `(v ~T0 @X0 1 ef1`ui ]
+{
+[; ;songs.c: 77: void nothingElseMatters(unsigned int index) {
+[e :U _nothingElseMatters ]
+[v _index `ui ~T0 @X0 1 r1 ]
+[f ]
+[; ;songs.c: 78: buzz(nothingElseMattersNotes[index], 70*nothingElseMattersDurations[index]);
+"78
+[e ( _buzz (2 , -> *U + &U _nothingElseMattersNotes * -> _index `ux -> -> # *U &U _nothingElseMattersNotes `ui `ux `l * -> -> 70 `i `ui *U + &U _nothingElseMattersDurations * -> _index `ux -> -> # *U &U _nothingElseMattersDurations `ui `ux ]
+[; ;songs.c: 79: buzz(0, 20);
+"79
+[e ( _buzz (2 , -> -> 0 `i `l -> -> 20 `i `ui ]
+[; ;songs.c: 87: }
+"87
+[e :UE 484 ]
+}
+"90
 [v _superMario `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;songs.c: 103: void superMario(unsigned int index) {
+[; ;songs.c: 90: void superMario(unsigned int index) {
 [e :U _superMario ]
 [v _index `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;songs.c: 104: buzz(SuperMarioNotes[index], 1000/SuperMarioDurations[index]);
-"104
-[e ( _buzz (2 , -> *U + &U _SuperMarioNotes * -> _index `ux -> -> # *U &U _SuperMarioNotes `ui `ux `l / -> -> 1000 `i `ui *U + &U _SuperMarioDurations * -> _index `ux -> -> # *U &U _SuperMarioDurations `ui `ux ]
-[; ;songs.c: 105: buzz(0, 20);
-"105
+[; ;songs.c: 91: buzz(superMarioNotes[index], 1000/superMarioDurations[index]);
+"91
+[e ( _buzz (2 , -> *U + &U _superMarioNotes * -> _index `ux -> -> # *U &U _superMarioNotes `ui `ux `l / -> -> 1000 `i `ui *U + &U _superMarioDurations * -> _index `ux -> -> # *U &U _superMarioDurations `ui `ux ]
+[; ;songs.c: 92: buzz(0, 20);
+"92
 [e ( _buzz (2 , -> -> 0 `i `l -> -> 20 `i `ui ]
-[; ;songs.c: 114: }
-"114
-[e :UE 484 ]
+[; ;songs.c: 101: }
+"101
+[e :UE 485 ]
 }
-"116
+"103
 [v _starWars `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;songs.c: 116: void starWars(unsigned int index) {
+[; ;songs.c: 103: void starWars(unsigned int index) {
 [e :U _starWars ]
 [v _index `ui ~T0 @X0 1 r1 ]
 [f ]
-[; ;songs.c: 117: buzz(ImperialMarchNotes[index], 4*ImperialMarchDurations[index]);
-"117
-[e ( _buzz (2 , -> *U + &U _ImperialMarchNotes * -> _index `ux -> -> # *U &U _ImperialMarchNotes `ui `ux `l * -> -> 4 `i `ui *U + &U _ImperialMarchDurations * -> _index `ux -> -> # *U &U _ImperialMarchDurations `ui `ux ]
-[; ;songs.c: 126: }
-"126
-[e :UE 485 ]
+[; ;songs.c: 104: buzz(imperialMarchNotes[index], 4*imperialMarchDurations[index]);
+"104
+[e ( _buzz (2 , -> *U + &U _imperialMarchNotes * -> _index `ux -> -> # *U &U _imperialMarchNotes `ui `ux `l * -> -> 4 `i `ui *U + &U _imperialMarchDurations * -> _index `ux -> -> # *U &U _imperialMarchDurations `ui `ux ]
+[; ;songs.c: 113: }
+"113
+[e :UE 486 ]
 }

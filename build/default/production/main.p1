@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "41 main.c
-[c E3965 0 1 2 3 4 5 6 7 8 9 .. ]
-[n E3965 . CALIBRATION NEW_GAME MOVE_EASY MOVE_HARD RELEASE FIRE CHANGE_SPEED LIGHT_UP GAME_WON GAME_LOST  ]
+[c E3969 0 1 2 3 4 5 6 7 8 9 .. ]
+[n E3969 . CALIBRATION NEW_GAME MOVE_EASY MOVE_HARD RELEASE FIRE CHANGE_SPEED LIGHT_UP GAME_WON GAME_LOST  ]
 [p mainexit ]
 "44
 [v _init `(v ~T0 @X0 0 sf ]
@@ -152,8 +152,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _stepper_pulse `(v ~T0 @X0 0 sf1`f ]
 "48
 [v _setAllLeds `(v ~T0 @X0 0 sf1`uc ]
-"25 songs.h
-[v _starWars `(v ~T0 @X0 0 ef1`ui ]
+"21 songs.h
+[v _nothingElseMatters `(v ~T0 @X0 0 ef1`ui ]
 "2522 /Applications/microchip/xc8/v1.36/include/pic18f2550.h
 [s S188 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S188 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
@@ -3714,12 +3714,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 15: void buzz(long freq, unsigned int duration);
 [; ;songs.h: 17: void initBuzz(void);
 [; ;songs.h: 19: void happyBirthday(void);
-[; ;songs.h: 21: void nothingElseMatters(void);
+[; ;songs.h: 21: void nothingElseMatters(unsigned int index);
 [; ;songs.h: 23: void superMario(unsigned int index);
 [; ;songs.h: 25: void starWars(unsigned int index);
 "28 songs.h
-[v _SuperMarioNotes `ui ~T0 @X0 -> 0 `x e ]
-[i _SuperMarioNotes
+[v _superMarioNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _superMarioNotes
 :U ..
 "29
 -> -> 2637 `i `ui
@@ -3822,7 +3822,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ..
 ]
-[; ;songs.h: 28: unsigned int SuperMarioNotes[] = {
+[; ;songs.h: 28: unsigned int superMarioNotes[] = {
 [; ;songs.h: 29: 2637, 2637, 0, 2637,
 [; ;songs.h: 30: 0, 2093, 2637, 0,
 [; ;songs.h: 31: 3136, 0, 0, 0,
@@ -3845,8 +3845,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 52: 2349, 1976, 0, 0
 [; ;songs.h: 53: };
 "56
-[v _SuperMarioDurations `ui ~T0 @X0 -> 0 `x e ]
-[i _SuperMarioDurations
+[v _superMarioDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _superMarioDurations
 :U ..
 "57
 -> -> 12 `i `ui
@@ -3948,7 +3948,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `ui
 ..
 ]
-[; ;songs.h: 56: unsigned int SuperMarioDurations[] = {
+[; ;songs.h: 56: unsigned int superMarioDurations[] = {
 [; ;songs.h: 57: 12, 12, 12, 12,
 [; ;songs.h: 58: 12, 12, 12, 12,
 [; ;songs.h: 59: 12, 12, 12, 12,
@@ -3971,8 +3971,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 80: 12, 12, 12, 12,
 [; ;songs.h: 81: };
 "84
-[v _ImperialMarchNotes `ui ~T0 @X0 -> 0 `x e ]
-[i _ImperialMarchNotes
+[v _imperialMarchNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _imperialMarchNotes
 :U ..
 -> -> 440 `i `ui
 -> -> 0 `i `ui
@@ -4017,15 +4017,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ..
 ]
-[; ;songs.h: 84: unsigned int ImperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
+[; ;songs.h: 84: unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
 [; ;songs.h: 85: 349, 0, 523, 0, 440, 0,
 [; ;songs.h: 86: 349, 0, 523, 0, 440, 0,
 [; ;songs.h: 87: 659, 0, 659, 0, 659, 0,
 [; ;songs.h: 88: 698, 0, 523, 0, 440, 0,
 [; ;songs.h: 89: 349, 0, 523, 0, 440, 0};
 "91
-[v _ImperialMarchDurations `ui ~T0 @X0 -> 0 `x e ]
-[i _ImperialMarchDurations
+[v _imperialMarchDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _imperialMarchDurations
 :U ..
 -> -> 50 `i `ui
 -> -> 20 `i `ui
@@ -4070,12 +4070,146 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 80 `i `ui
 ..
 ]
-[; ;songs.h: 91: unsigned int ImperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
+[; ;songs.h: 91: unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
 [; ;songs.h: 92: 40, 5, 20, 5, 60, 10,
 [; ;songs.h: 93: 40, 5, 20, 5, 60, 80,
 [; ;songs.h: 94: 50, 20, 50, 20, 50, 20,
 [; ;songs.h: 95: 40, 5, 20, 5, 60, 10,
 [; ;songs.h: 96: 40, 5, 20, 5, 60, 80};
+"98
+[v _nothingElseMattersNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersNotes
+:U ..
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+..
+]
+[; ;songs.h: 98: unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+"99
+[v _nothingElseMattersDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersDurations
+:U ..
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+-> -> 2 `i `ui
+..
+]
+[; ;songs.h: 99: unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
+"101
+[v _nothingElseMattersFullNotes `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersFullNotes
+:U ..
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"102
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"103
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"104
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 494 `i `ui
+"105
+-> -> 330 `i `ui
+-> -> 494 `i `ui
+-> -> 330 `i `ui
+-> -> 165 `i `ui
+-> -> 494 `i `ui
+-> -> 262 `i `ui
+-> -> 494 `i `ui
+-> -> 440 `i `ui
+"106
+-> -> 494 `i `ui
+-> -> 440 `i `ui
+"108
+-> -> 330 `i `ui
+..
+]
+[; ;songs.h: 101: unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+[; ;songs.h: 102: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 103: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 104: 165, 196, 245, 330, 245, 494,
+[; ;songs.h: 105: 330, 494, 330, 165, 494, 262, 494, 440,
+[; ;songs.h: 106: 494, 440, 330
+[; ;songs.h: 108: };
+"109
+[v _nothingElseMattersFullDurations `ui ~T0 @X0 -> 0 `x e ]
+[i _nothingElseMattersFullDurations
+:U ..
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"110
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"111
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"112
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"113
+-> -> 16 `i `ui
+-> -> 2 `i `ui
+-> -> 8 `i `ui
+-> -> 8 `i `ui
+-> -> 2 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"114
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"115
+-> -> 4 `i `ui
+..
+]
+[; ;songs.h: 109: unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
+[; ;songs.h: 110: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 111: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 112: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 113: 16, 2, 8, 8, 2, 4, 4, 4,
+[; ;songs.h: 114: 4, 4, 4
+[; ;songs.h: 115: };
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
@@ -4202,18 +4336,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 "30
 [v _last_new_note `Cui ~T0 @X0 1 s ]
 [i _last_new_note
-/ -> # _ImperialMarchNotes `ui -> # *U + &U _ImperialMarchNotes * -> -> -> 0 `i `ui `ux -> -> # *U &U _ImperialMarchNotes `ui `ux `ui
+/ -> # _nothingElseMattersNotes `ui -> # *U + &U _nothingElseMattersNotes * -> -> -> 0 `i `ui `ux -> -> # *U &U _nothingElseMattersNotes `ui `ux `ui
 ]
-[; ;main.c: 30: static const unsigned int last_new_note = sizeof(ImperialMarchNotes)/sizeof(ImperialMarchNotes[0]);
+[; ;main.c: 30: static const unsigned int last_new_note = sizeof(nothingElseMattersNotes)/sizeof(nothingElseMattersNotes[0]);
 "31
 [v _last_win_note `Cui ~T0 @X0 1 s ]
 [i _last_win_note
-/ -> # _SuperMarioNotes `ui -> # *U + &U _SuperMarioNotes * -> -> -> 0 `i `ui `ux -> -> # *U &U _SuperMarioNotes `ui `ux `ui
+/ -> # _superMarioNotes `ui -> # *U + &U _superMarioNotes * -> -> -> 0 `i `ui `ux -> -> # *U &U _superMarioNotes `ui `ux `ui
 ]
-[; ;main.c: 31: static const unsigned int last_win_note = sizeof(SuperMarioNotes)/sizeof(SuperMarioNotes[0]);
+[; ;main.c: 31: static const unsigned int last_win_note = sizeof(superMarioNotes)/sizeof(superMarioNotes[0]);
 "41
-[v _current_state `E3965 ~T0 @X0 1 s ]
-[v _state_to_recover `E3965 ~T0 @X0 1 s ]
+[v _current_state `E3969 ~T0 @X0 1 s ]
+[v _state_to_recover `E3969 ~T0 @X0 1 s ]
 [; ;main.c: 32: static enum {CALIBRATION,
 [; ;main.c: 33: NEW_GAME,
 [; ;main.c: 34: MOVE_EASY,
@@ -4348,10 +4482,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 [; ;main.c: 102: current_state = CALIBRATION;
 "102
-[e = _current_state . `E3965 0 ]
+[e = _current_state . `E3969 0 ]
 [; ;main.c: 103: state_to_recover = CALIBRATION;
 "103
-[e = _state_to_recover . `E3965 0 ]
+[e = _state_to_recover . `E3969 0 ]
 [; ;main.c: 105: note_new = 0;
 "105
 [e = _note_new -> -> 0 `i `ui ]
@@ -4405,7 +4539,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _position -> 0 `i ]
 [; ;main.c: 126: current_state = NEW_GAME;
 "126
-[e = _current_state . `E3965 1 ]
+[e = _current_state . `E3969 1 ]
 "127
 }
 [e :U 481 ]
@@ -4431,9 +4565,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 138: LATAbits.LATA1 = 1;
 "138
 [e = . . _LATAbits 0 1 -> -> 1 `i `uc ]
-[; ;main.c: 139: starWars(note_new);
+[; ;main.c: 139: nothingElseMatters(note_new);
 "139
-[e ( _starWars (1 _note_new ]
+[e ( _nothingElseMatters (1 _note_new ]
 [; ;main.c: 140: note_new++;
 "140
 [e ++ _note_new -> -> 1 `i `ui ]
@@ -4443,7 +4577,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 144: current_state = MOVE_HARD;
 "144
-[e = _current_state . `E3965 3 ]
+[e = _current_state . `E3969 3 ]
 [; ;main.c: 145: setAllLeds(0);
 "145
 [e ( _setAllLeds (1 -> -> 0 `i `uc ]
@@ -4460,7 +4594,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 149: current_state = MOVE_EASY;
 "149
-[e = _current_state . `E3965 2 ]
+[e = _current_state . `E3969 2 ]
 [; ;main.c: 150: setAllLeds(0);
 "150
 [e ( _setAllLeds (1 -> -> 0 `i `uc ]
@@ -4487,7 +4621,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! == -> _was_released `i -> 1 `i 488  ]
 [; ;main.c: 161: current_state = FIRE;
 "161
-[e = _current_state . `E3965 5 ]
+[e = _current_state . `E3969 5 ]
 [e :U 488 ]
 "162
 }
@@ -4502,7 +4636,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! == -> _was_released `i -> 0 `i 490  ]
 [; ;main.c: 165: current_state = RELEASE;
 "165
-[e = _current_state . `E3965 4 ]
+[e = _current_state . `E3969 4 ]
 [e :U 490 ]
 "166
 }
@@ -4530,7 +4664,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 177: current_state = FIRE;
 "177
-[e = _current_state . `E3965 5 ]
+[e = _current_state . `E3969 5 ]
 "178
 }
 [; ;main.c: 178: }
@@ -4542,7 +4676,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 180: current_state = CHANGE_SPEED;
 "180
-[e = _current_state . `E3965 6 ]
+[e = _current_state . `E3969 6 ]
 "181
 }
 [e :U 495 ]
@@ -4563,7 +4697,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 185: current_state = CHANGE_SPEED;
 "185
-[e = _current_state . `E3965 6 ]
+[e = _current_state . `E3969 6 ]
 "186
 }
 [e :U 498 ]
@@ -4578,7 +4712,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 189: current_state = RELEASE;
 "189
-[e = _current_state . `E3965 4 ]
+[e = _current_state . `E3969 4 ]
 "190
 }
 [e :U 499 ]
@@ -4598,14 +4732,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 501  ]
 [; ;main.c: 200: current_state = MOVE_EASY;
 "200
-[e = _current_state . `E3965 2 ]
+[e = _current_state . `E3969 2 ]
 [e $U 502  ]
 "201
 [e :U 501 ]
 [; ;main.c: 201: else
 [; ;main.c: 202: current_state = MOVE_HARD;
 "202
-[e = _current_state . `E3965 3 ]
+[e = _current_state . `E3969 3 ]
 [e :U 502 ]
 [; ;main.c: 203: break;
 "203
@@ -4637,14 +4771,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! == -> . . _PORTBbits 0 0 `i -> 1 `i 508  ]
 [; ;main.c: 212: current_state = MOVE_EASY;
 "212
-[e = _current_state . `E3965 2 ]
+[e = _current_state . `E3969 2 ]
 [e $U 509  ]
 "213
 [e :U 508 ]
 [; ;main.c: 213: else
 [; ;main.c: 214: current_state = MOVE_HARD;
 "214
-[e = _current_state . `E3965 3 ]
+[e = _current_state . `E3969 3 ]
 [e :U 509 ]
 [; ;main.c: 215: break;
 "215
@@ -4667,7 +4801,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ ! == -> _i `i -> 16 `i 510  ]
 [; ;main.c: 219: current_state = GAME_WON;
 "219
-[e = _current_state . `E3965 8 ]
+[e = _current_state . `E3969 8 ]
 [e :U 510 ]
 [; ;main.c: 220: break;
 "220
@@ -4697,7 +4831,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _hard_speed -> % ( _rand ..  -> 2 `i `f ]
 [; ;main.c: 233: current_state = MOVE_HARD;
 "233
-[e = _current_state . `E3965 3 ]
+[e = _current_state . `E3969 3 ]
 [; ;main.c: 234: break;
 "234
 [e $U 478  ]
@@ -4748,7 +4882,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 247: current_state = LIGHT_UP;
 "247
-[e = _current_state . `E3965 7 ]
+[e = _current_state . `E3969 7 ]
 "248
 }
 [; ;main.c: 248: }
@@ -4756,7 +4890,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "249
 [e :U 519 ]
 [; ;main.c: 249: else current_state = GAME_LOST;
-[e = _current_state . `E3965 9 ]
+[e = _current_state . `E3969 9 ]
 [e :U 520 ]
 [; ;main.c: 251: break;
 "251
@@ -4775,7 +4909,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _note_new -> -> 0 `i `ui ]
 [; ;main.c: 259: current_state = NEW_GAME;
 "259
-[e = _current_state . `E3965 1 ]
+[e = _current_state . `E3969 1 ]
 [; ;main.c: 260: break;
 "260
 [e $U 478  ]
@@ -4800,7 +4934,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 [; ;main.c: 269: current_state = NEW_GAME;
 "269
-[e = _current_state . `E3965 1 ]
+[e = _current_state . `E3969 1 ]
 "270
 }
 [e :U 523 ]
@@ -4813,7 +4947,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 524 ]
 [; ;main.c: 274: current_state = CALIBRATION;
 "274
-[e = _current_state . `E3965 0 ]
+[e = _current_state . `E3969 0 ]
 [; ;main.c: 275: break;
 "275
 [e $U 478  ]
@@ -4823,16 +4957,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 478  ]
 "117
 [e :U 479 ]
-[e [\ _current_state , $ . `E3965 0 480
- , $ . `E3965 1 482
- , $ . `E3965 2 486
- , $ . `E3965 3 491
- , $ . `E3965 4 500
- , $ . `E3965 7 503
- , $ . `E3965 6 511
- , $ . `E3965 5 514
- , $ . `E3965 9 521
- , $ . `E3965 8 522
+[e [\ _current_state , $ . `E3969 0 480
+ , $ . `E3969 1 482
+ , $ . `E3969 2 486
+ , $ . `E3969 3 491
+ , $ . `E3969 4 500
+ , $ . `E3969 7 503
+ , $ . `E3969 6 511
+ , $ . `E3969 5 514
+ , $ . `E3969 9 521
+ , $ . `E3969 8 522
  524 ]
 "277
 [e :U 478 ]

@@ -73,35 +73,22 @@ void happyBirthday(void) {
     buzz(0, 500);
 }
 */
-/*
-void nothingElseMatters(void) {
-    unsigned int notes[] = {165, 196, 245, 330, 245, 196,
-                            165, 196, 245, 330, 245, 196,
-                            165, 196, 245, 330, 245, 196,
-                            165, 196, 245, 330, 245, 494,
-                            330, 494, 330, 165, 494, 262, 494, 440,
-                            494, 440, 330
+
+void nothingElseMatters(unsigned int index) {
+    buzz(nothingElseMattersNotes[index], 70*nothingElseMattersDurations[index]);
+    buzz(0, 20);
     
-    };
-    unsigned int interval[] = {4, 4, 4, 4, 4, 4,
-                               4, 4, 4, 4, 4, 4,
-                               4, 4, 4, 4, 4, 4,
-                               4, 4, 4, 4, 4, 4,
-                               16, 2, 8, 8, 2, 4, 4, 4,
-                               4, 4, 4
-    };
-    
-    while(1) {
-        for (unsigned int k=0; k<sizeof(notes)/sizeof(notes[0]); k++) {
-            buzz(notes[k], 70*interval[k]);
-            buzz(0, 20);
-        }
+    /*
+    for (unsigned int k=0; k<sizeof(notes)/sizeof(notes[0]); k++) {
+        buzz(notes[k], 70*interval[k]);
+        buzz(0, 20);
     }
+    */
 }
-*/
+
 
 void superMario(unsigned int index) {
-    buzz(SuperMarioNotes[index], 1000/SuperMarioDurations[index]);
+    buzz(superMarioNotes[index], 1000/superMarioDurations[index]);
     buzz(0, 20);
         
     /*
@@ -114,7 +101,7 @@ void superMario(unsigned int index) {
 }
 
 void starWars(unsigned int index) {
-    buzz(ImperialMarchNotes[index], 4*ImperialMarchDurations[index]);
+    buzz(imperialMarchNotes[index], 4*imperialMarchDurations[index]);
     
     /*
     for (unsigned int k=0; k<sizeof(notes)/sizeof(notes[0]); k++) {

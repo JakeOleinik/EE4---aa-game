@@ -4639,14 +4639,14 @@ void initBuzz(void);
 
 void happyBirthday(void);
 
-void nothingElseMatters(void);
+void nothingElseMatters(unsigned int index);
 
 void superMario(unsigned int index);
 
 void starWars(unsigned int index);
 
 
-unsigned int SuperMarioNotes[] = {
+unsigned int superMarioNotes[] = {
 2637, 2637, 0, 2637,
 0, 2093, 2637, 0,
 3136, 0, 0, 0,
@@ -4674,7 +4674,7 @@ unsigned int SuperMarioNotes[] = {
 };
 
 
-unsigned int SuperMarioDurations[] = {
+unsigned int superMarioDurations[] = {
 12, 12, 12, 12,
 12, 12, 12, 12,
 12, 12, 12, 12,
@@ -4702,19 +4702,38 @@ unsigned int SuperMarioDurations[] = {
 };
 
 
-unsigned int ImperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
+unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
 349, 0, 523, 0, 440, 0,
 349, 0, 523, 0, 440, 0,
 659, 0, 659, 0, 659, 0,
 698, 0, 523, 0, 440, 0,
 349, 0, 523, 0, 440, 0};
 
-unsigned int ImperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
+unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
 40, 5, 20, 5, 60, 10,
 40, 5, 20, 5, 60, 80,
 50, 20, 50, 20, 50, 20,
 40, 5, 20, 5, 60, 10,
 40, 5, 20, 5, 60, 80};
+
+unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
+
+unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 196,
+165, 196, 245, 330, 245, 494,
+330, 494, 330, 165, 494, 262, 494, 440,
+494, 440, 330
+
+};
+unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+4, 4, 4, 4, 4, 4,
+16, 2, 8, 8, 2, 4, 4, 4,
+4, 4, 4
+};
 
 # 4 "/Applications/microchip/xc8/v1.36/include/__size_t.h"
 typedef unsigned size_t;
@@ -4860,8 +4879,8 @@ static unsigned char target;
 static int position;
 static float steps_per_led;
 static const unsigned int total_steps = 800;
-static const unsigned int last_new_note = sizeof(ImperialMarchNotes)/sizeof(ImperialMarchNotes[0]);
-static const unsigned int last_win_note = sizeof(SuperMarioNotes)/sizeof(SuperMarioNotes[0]);
+static const unsigned int last_new_note = sizeof(nothingElseMattersNotes)/sizeof(nothingElseMattersNotes[0]);
+static const unsigned int last_win_note = sizeof(superMarioNotes)/sizeof(superMarioNotes[0]);
 static enum {CALIBRATION,
 NEW_GAME,
 MOVE_EASY,
@@ -4957,7 +4976,7 @@ note_new%=last_new_note;
 was_released = 0;
 note_win = 0;
 LATAbits.LATA1 = 1;
-starWars(note_new);
+nothingElseMatters(note_new);
 note_new++;
 
 

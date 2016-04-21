@@ -27,8 +27,8 @@ static unsigned char target;
 static int position;
 static float steps_per_led;
 static const unsigned int total_steps = 800;
-static const unsigned int last_new_note = sizeof(ImperialMarchNotes)/sizeof(ImperialMarchNotes[0]);
-static const unsigned int last_win_note = sizeof(SuperMarioNotes)/sizeof(SuperMarioNotes[0]);
+static const unsigned int last_new_note = sizeof(nothingElseMattersNotes)/sizeof(nothingElseMattersNotes[0]);
+static const unsigned int last_win_note = sizeof(superMarioNotes)/sizeof(superMarioNotes[0]);
 static enum {CALIBRATION,
             NEW_GAME, 
             MOVE_EASY, 
@@ -136,7 +136,7 @@ static void fsm(void) {
             was_released = 0;
             note_win = 0;
             LATAbits.LATA1 = 1;
-            starWars(note_new);
+            nothingElseMatters(note_new);
             note_new++;
           
         // *** transitions ***
