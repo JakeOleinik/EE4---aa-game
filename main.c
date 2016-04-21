@@ -110,6 +110,8 @@ static void init(void) {
     steps_per_led = total_steps/16;
     hardware_init();   
     prev_hall = PORTAbits.RA5;
+    
+    //srand(time(NULL));
 }
 
 static void fsm(void) {
@@ -165,6 +167,9 @@ static void fsm(void) {
                     current_state = RELEASE;
             }
             
+            if (PORTBbits.RB0 == 0)
+                current_state = MOVE_HARD;
+            
             break;
         
         case MOVE_HARD :
@@ -187,7 +192,11 @@ static void fsm(void) {
             }
             else {
                 current_state = RELEASE;
-            }                 
+            }
+            
+            if (PORTBbits.RB0 == 1)
+                current_state = MOVE_EASY;
+            
             
             break;
        
@@ -221,14 +230,14 @@ static void fsm(void) {
 
         case CHANGE_SPEED :
             
-            if (rand()*2 >= 1) 
+            if (rand()%2 >= 1) 
                 stepper_direction = 1;
             else 
                 stepper_direction = -1;
             
             
-            hard_speed_timer = rand()%2000+100;
-            hard_speed = rand()%2;
+            hard_speed_timer = (int)(rand()%1000+100);
+            hard_speed = 1+(rand()%100)/100;
             
             current_state = MOVE_HARD;
             break;
@@ -265,7 +274,7 @@ static void fsm(void) {
             note_win++;
             LATAbits.LATA1 = 0;
             
-            if(note_win == last_win_note) {
+            if (note_win == last_win_note)  {
                 current_state = NEW_GAME;
             }
             break;
