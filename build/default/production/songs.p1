@@ -3646,46 +3646,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 1976 `i `ui
 -> -> 0 `i `ui
 -> -> 0 `i `ui
-"44
--> -> 2093 `i `ui
--> -> 0 `i `ui
--> -> 0 `i `ui
--> -> 1568 `i `ui
-"45
--> -> 0 `i `ui
--> -> 0 `i `ui
--> -> 1319 `i `ui
--> -> 0 `i `ui
-"46
--> -> 0 `i `ui
--> -> 1760 `i `ui
--> -> 0 `i `ui
--> -> 1976 `i `ui
-"47
--> -> 0 `i `ui
--> -> 1865 `i `ui
--> -> 1760 `i `ui
--> -> 0 `i `ui
-"49
--> -> 1568 `i `ui
--> -> 2637 `i `ui
--> -> 3136 `i `ui
-"50
--> -> 3520 `i `ui
--> -> 0 `i `ui
--> -> 2794 `i `ui
--> -> 3136 `i `ui
-"51
--> -> 0 `i `ui
--> -> 2637 `i `ui
--> -> 0 `i `ui
--> -> 2093 `i `ui
-"52
--> -> 2349 `i `ui
--> -> 1976 `i `ui
--> -> 0 `i `ui
-"53
--> -> 0 `i `ui
 ..
 ]
 [; ;songs.h: 28: unsigned int superMarioNotes[] = {
@@ -3701,24 +3661,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;songs.h: 40: 3520, 0, 2794, 3136,
 [; ;songs.h: 41: 0, 2637, 0, 2093,
 [; ;songs.h: 42: 2349, 1976, 0, 0,
-[; ;songs.h: 44: 2093, 0, 0, 1568,
-[; ;songs.h: 45: 0, 0, 1319, 0,
-[; ;songs.h: 46: 0, 1760, 0, 1976,
-[; ;songs.h: 47: 0, 1865, 1760, 0,
-[; ;songs.h: 49: 1568, 2637, 3136,
-[; ;songs.h: 50: 3520, 0, 2794, 3136,
-[; ;songs.h: 51: 0, 2637, 0, 2093,
-[; ;songs.h: 52: 2349, 1976, 0, 0
-[; ;songs.h: 53: };
-"56
+[; ;songs.h: 54: };
+"57
 [v _superMarioDurations `ui ~T0 @X0 -> 0 `x e ]
 [i _superMarioDurations
 :U ..
-"57
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
 "58
 -> -> 12 `i `ui
 -> -> 12 `i `ui
@@ -3734,7 +3681,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
-"62
+"61
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
@@ -3754,15 +3701,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
-"67
--> -> 9 `i `ui
--> -> 9 `i `ui
--> -> 9 `i `ui
+"66
+-> -> 12 `i `ui
+-> -> 12 `i `ui
+-> -> 12 `i `ui
+-> -> 12 `i `ui
 "68
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
+-> -> 9 `i `ui
+-> -> 9 `i `ui
+-> -> 9 `i `ui
 "69
 -> -> 12 `i `ui
 -> -> 12 `i `ui
@@ -3773,70 +3720,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
-"72
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"73
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"74
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"75
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"77
--> -> 9 `i `ui
--> -> 9 `i `ui
--> -> 9 `i `ui
-"78
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"79
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
--> -> 12 `i `ui
-"80
+"71
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 -> -> 12 `i `ui
 ..
 ]
-[; ;songs.h: 56: unsigned int superMarioDurations[] = {
-[; ;songs.h: 57: 12, 12, 12, 12,
+[; ;songs.h: 57: unsigned int superMarioDurations[] = {
 [; ;songs.h: 58: 12, 12, 12, 12,
 [; ;songs.h: 59: 12, 12, 12, 12,
 [; ;songs.h: 60: 12, 12, 12, 12,
-[; ;songs.h: 62: 12, 12, 12, 12,
+[; ;songs.h: 61: 12, 12, 12, 12,
 [; ;songs.h: 63: 12, 12, 12, 12,
 [; ;songs.h: 64: 12, 12, 12, 12,
 [; ;songs.h: 65: 12, 12, 12, 12,
-[; ;songs.h: 67: 9, 9, 9,
-[; ;songs.h: 68: 12, 12, 12, 12,
+[; ;songs.h: 66: 12, 12, 12, 12,
+[; ;songs.h: 68: 9, 9, 9,
 [; ;songs.h: 69: 12, 12, 12, 12,
 [; ;songs.h: 70: 12, 12, 12, 12,
-[; ;songs.h: 72: 12, 12, 12, 12,
-[; ;songs.h: 73: 12, 12, 12, 12,
-[; ;songs.h: 74: 12, 12, 12, 12,
-[; ;songs.h: 75: 12, 12, 12, 12,
-[; ;songs.h: 77: 9, 9, 9,
-[; ;songs.h: 78: 12, 12, 12, 12,
-[; ;songs.h: 79: 12, 12, 12, 12,
-[; ;songs.h: 80: 12, 12, 12, 12,
-[; ;songs.h: 81: };
-"84
+[; ;songs.h: 71: 12, 12, 12, 12,
+[; ;songs.h: 83: };
+"86
 [v _imperialMarchNotes `ui ~T0 @X0 -> 0 `x e ]
 [i _imperialMarchNotes
 :U ..
@@ -3846,35 +3751,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 -> -> 440 `i `ui
 -> -> 0 `i `ui
-"85
--> -> 349 `i `ui
--> -> 0 `i `ui
--> -> 523 `i `ui
--> -> 0 `i `ui
--> -> 440 `i `ui
--> -> 0 `i `ui
-"86
--> -> 349 `i `ui
--> -> 0 `i `ui
--> -> 523 `i `ui
--> -> 0 `i `ui
--> -> 440 `i `ui
--> -> 0 `i `ui
 "87
--> -> 659 `i `ui
+-> -> 349 `i `ui
 -> -> 0 `i `ui
--> -> 659 `i `ui
+-> -> 523 `i `ui
 -> -> 0 `i `ui
--> -> 659 `i `ui
+-> -> 440 `i `ui
 -> -> 0 `i `ui
 "88
--> -> 698 `i `ui
+-> -> 349 `i `ui
 -> -> 0 `i `ui
 -> -> 523 `i `ui
 -> -> 0 `i `ui
 -> -> 440 `i `ui
 -> -> 0 `i `ui
 "89
+-> -> 659 `i `ui
+-> -> 0 `i `ui
+-> -> 659 `i `ui
+-> -> 0 `i `ui
+-> -> 659 `i `ui
+-> -> 0 `i `ui
+"90
+-> -> 698 `i `ui
+-> -> 0 `i `ui
+-> -> 523 `i `ui
+-> -> 0 `i `ui
+-> -> 440 `i `ui
+-> -> 0 `i `ui
+"91
 -> -> 349 `i `ui
 -> -> 0 `i `ui
 -> -> 523 `i `ui
@@ -3883,13 +3788,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ..
 ]
-[; ;songs.h: 84: unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
-[; ;songs.h: 85: 349, 0, 523, 0, 440, 0,
-[; ;songs.h: 86: 349, 0, 523, 0, 440, 0,
-[; ;songs.h: 87: 659, 0, 659, 0, 659, 0,
-[; ;songs.h: 88: 698, 0, 523, 0, 440, 0,
-[; ;songs.h: 89: 349, 0, 523, 0, 440, 0};
-"91
+[; ;songs.h: 86: unsigned int imperialMarchNotes[] = { 440, 0, 440, 0, 440, 0,
+[; ;songs.h: 87: 349, 0, 523, 0, 440, 0,
+[; ;songs.h: 88: 349, 0, 523, 0, 440, 0,
+[; ;songs.h: 89: 659, 0, 659, 0, 659, 0,
+[; ;songs.h: 90: 698, 0, 523, 0, 440, 0,
+[; ;songs.h: 91: 349, 0, 523, 0, 440, 0};
+"93
 [v _imperialMarchDurations `ui ~T0 @X0 -> 0 `x e ]
 [i _imperialMarchDurations
 :U ..
@@ -3899,35 +3804,35 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 20 `i `ui
 -> -> 50 `i `ui
 -> -> 20 `i `ui
-"92
+"94
 -> -> 40 `i `ui
 -> -> 5 `i `ui
 -> -> 20 `i `ui
 -> -> 5 `i `ui
 -> -> 60 `i `ui
 -> -> 10 `i `ui
-"93
--> -> 40 `i `ui
--> -> 5 `i `ui
--> -> 20 `i `ui
--> -> 5 `i `ui
--> -> 60 `i `ui
--> -> 80 `i `ui
-"94
--> -> 50 `i `ui
--> -> 20 `i `ui
--> -> 50 `i `ui
--> -> 20 `i `ui
--> -> 50 `i `ui
--> -> 20 `i `ui
 "95
 -> -> 40 `i `ui
 -> -> 5 `i `ui
 -> -> 20 `i `ui
 -> -> 5 `i `ui
 -> -> 60 `i `ui
--> -> 10 `i `ui
+-> -> 80 `i `ui
 "96
+-> -> 50 `i `ui
+-> -> 20 `i `ui
+-> -> 50 `i `ui
+-> -> 20 `i `ui
+-> -> 50 `i `ui
+-> -> 20 `i `ui
+"97
+-> -> 40 `i `ui
+-> -> 5 `i `ui
+-> -> 20 `i `ui
+-> -> 5 `i `ui
+-> -> 60 `i `ui
+-> -> 10 `i `ui
+"98
 -> -> 40 `i `ui
 -> -> 5 `i `ui
 -> -> 20 `i `ui
@@ -3936,13 +3841,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 80 `i `ui
 ..
 ]
-[; ;songs.h: 91: unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
-[; ;songs.h: 92: 40, 5, 20, 5, 60, 10,
-[; ;songs.h: 93: 40, 5, 20, 5, 60, 80,
-[; ;songs.h: 94: 50, 20, 50, 20, 50, 20,
-[; ;songs.h: 95: 40, 5, 20, 5, 60, 10,
-[; ;songs.h: 96: 40, 5, 20, 5, 60, 80};
-"98
+[; ;songs.h: 93: unsigned int imperialMarchDurations[] = {50, 20, 50, 20, 50, 20,
+[; ;songs.h: 94: 40, 5, 20, 5, 60, 10,
+[; ;songs.h: 95: 40, 5, 20, 5, 60, 80,
+[; ;songs.h: 96: 50, 20, 50, 20, 50, 20,
+[; ;songs.h: 97: 40, 5, 20, 5, 60, 10,
+[; ;songs.h: 98: 40, 5, 20, 5, 60, 80};
+"100
 [v _nothingElseMattersNotes `ui ~T0 @X0 -> 0 `x e ]
 [i _nothingElseMattersNotes
 :U ..
@@ -3954,8 +3859,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 196 `i `ui
 ..
 ]
-[; ;songs.h: 98: unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
-"99
+[; ;songs.h: 100: unsigned int nothingElseMattersNotes[] = {165, 196, 245, 330, 245, 196};
+"101
 [v _nothingElseMattersDurations `ui ~T0 @X0 -> 0 `x e ]
 [i _nothingElseMattersDurations
 :U ..
@@ -3967,25 +3872,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 2 `i `ui
 ..
 ]
-[; ;songs.h: 99: unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
-"101
+[; ;songs.h: 101: unsigned int nothingElseMattersDurations[] = {2, 2, 2, 2, 2, 2};
+"103
 [v _nothingElseMattersFullNotes `ui ~T0 @X0 -> 0 `x e ]
 [i _nothingElseMattersFullNotes
 :U ..
--> -> 165 `i `ui
--> -> 196 `i `ui
--> -> 245 `i `ui
--> -> 330 `i `ui
--> -> 245 `i `ui
--> -> 196 `i `ui
-"102
--> -> 165 `i `ui
--> -> 196 `i `ui
--> -> 245 `i `ui
--> -> 330 `i `ui
--> -> 245 `i `ui
--> -> 196 `i `ui
-"103
 -> -> 165 `i `ui
 -> -> 196 `i `ui
 -> -> 245 `i `ui
@@ -3998,8 +3889,22 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 245 `i `ui
 -> -> 330 `i `ui
 -> -> 245 `i `ui
--> -> 494 `i `ui
+-> -> 196 `i `ui
 "105
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 196 `i `ui
+"106
+-> -> 165 `i `ui
+-> -> 196 `i `ui
+-> -> 245 `i `ui
+-> -> 330 `i `ui
+-> -> 245 `i `ui
+-> -> 494 `i `ui
+"107
 -> -> 330 `i `ui
 -> -> 494 `i `ui
 -> -> 330 `i `ui
@@ -4008,38 +3913,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 262 `i `ui
 -> -> 494 `i `ui
 -> -> 440 `i `ui
-"106
+"108
 -> -> 494 `i `ui
 -> -> 440 `i `ui
-"108
+"110
 -> -> 330 `i `ui
 ..
 ]
-[; ;songs.h: 101: unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
-[; ;songs.h: 102: 165, 196, 245, 330, 245, 196,
-[; ;songs.h: 103: 165, 196, 245, 330, 245, 196,
-[; ;songs.h: 104: 165, 196, 245, 330, 245, 494,
-[; ;songs.h: 105: 330, 494, 330, 165, 494, 262, 494, 440,
-[; ;songs.h: 106: 494, 440, 330
-[; ;songs.h: 108: };
-"109
+[; ;songs.h: 103: unsigned int nothingElseMattersFullNotes[] = {165, 196, 245, 330, 245, 196,
+[; ;songs.h: 104: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 105: 165, 196, 245, 330, 245, 196,
+[; ;songs.h: 106: 165, 196, 245, 330, 245, 494,
+[; ;songs.h: 107: 330, 494, 330, 165, 494, 262, 494, 440,
+[; ;songs.h: 108: 494, 440, 330
+[; ;songs.h: 110: };
+"111
 [v _nothingElseMattersFullDurations `ui ~T0 @X0 -> 0 `x e ]
 [i _nothingElseMattersFullDurations
 :U ..
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
-"110
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
--> -> 4 `i `ui
-"111
 -> -> 4 `i `ui
 -> -> 4 `i `ui
 -> -> 4 `i `ui
@@ -4054,6 +3945,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 4 `i `ui
 -> -> 4 `i `ui
 "113
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"114
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+-> -> 4 `i `ui
+"115
 -> -> 16 `i `ui
 -> -> 2 `i `ui
 -> -> 8 `i `ui
@@ -4062,20 +3967,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 4 `i `ui
 -> -> 4 `i `ui
 -> -> 4 `i `ui
-"114
+"116
 -> -> 4 `i `ui
 -> -> 4 `i `ui
-"115
+"117
 -> -> 4 `i `ui
 ..
 ]
-[; ;songs.h: 109: unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
-[; ;songs.h: 110: 4, 4, 4, 4, 4, 4,
-[; ;songs.h: 111: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 111: unsigned int nothingElseMattersFullDurations[] = {4, 4, 4, 4, 4, 4,
 [; ;songs.h: 112: 4, 4, 4, 4, 4, 4,
-[; ;songs.h: 113: 16, 2, 8, 8, 2, 4, 4, 4,
-[; ;songs.h: 114: 4, 4, 4
-[; ;songs.h: 115: };
+[; ;songs.h: 113: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 114: 4, 4, 4, 4, 4, 4,
+[; ;songs.h: 115: 16, 2, 8, 8, 2, 4, 4, 4,
+[; ;songs.h: 116: 4, 4, 4
+[; ;songs.h: 117: };
 "13 songs.c
 [v _myDelay_us `(v ~T0 @X0 1 ef1`ui ]
 {

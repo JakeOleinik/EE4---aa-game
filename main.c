@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 /** D E F I N E S ***************************************************/
 #define PUSHED 0
 #define TRUE 1
@@ -19,7 +20,9 @@
 static unsigned int note_new = 0, note_win = 0;
 static unsigned char was_released;
 static unsigned int hard_speed_timer;
+static unsigned char nr_toggles = 0;
 static float hard_speed;
+static unsigned int seed_nr = 0;
 static int stepper_direction;
 static unsigned char prev_hall;
 static unsigned char LEDs[16];
@@ -38,7 +41,7 @@ static enum {CALIBRATION,
             CHANGE_SPEED,
             LIGHT_UP,
             GAME_WON,
-            GAME_LOST } current_state, state_to_recover;
+            GAME_LOST } current_state;
 
 /** P R I V A T E   P R O T O T Y P E S *****************************/
 static void init(void);
@@ -82,6 +85,7 @@ static void init(void) {
     TRISBbits.TRISB7 = 0; //COL3
     TRISAbits.TRISA0 = 0; //COL4
     TRISAbits.TRISA1 = 0; //GREEN LED
+    TRISAbits.TRISA2 = 0; //FIRE BTN LED
     TRISAbits.TRISA3 = 0; //BUZZER
     TRISAbits.TRISA4 = 1; //FIRE BUTTON
     TRISAbits.TRISA5 = 1; //HALL
@@ -97,10 +101,10 @@ static void init(void) {
     LATBbits.LATB7 = 0;
     LATAbits.LATA0 = 0;
     LATAbits.LATA1 = 1;
+    LATAbits.LATA2 = 0;
     LATAbits.LATA3 = 0;
     
 	current_state = CALIBRATION;
-    state_to_recover = CALIBRATION;
 	
     note_new = 0;
     note_win = 0;
@@ -111,7 +115,7 @@ static void init(void) {
     hardware_init();   
     prev_hall = PORTAbits.RA5;
     
-    //srand(time(NULL));
+    
 }
 
 static void fsm(void) {
@@ -123,16 +127,24 @@ static void fsm(void) {
             
             //transition
             if (PORTAbits.RA5 != prev_hall) {
-                //prev_hall = PORTAbits.RA5;
-                position = 0; //might require offset 
-                current_state = NEW_GAME;                
+                prev_hall = PORTAbits.RA5;
+                if (nr_toggles == 1) {
+                    position = 0; //might require offset 
+                    current_state = NEW_GAME;
+                }
+                else {
+                    nr_toggles+=1;
+                }
             }
             
             break;
             
         case NEW_GAME :
         // *** outputs ***
+            LATAbits.LATA2 = 1;
             setAllLeds(0);
+            seed_nr++;
+            seed_nr%=1000;
             
             note_new%=last_new_note;
             was_released = 0;
@@ -142,21 +154,28 @@ static void fsm(void) {
             note_new++;
           
         // *** transitions ***
-            if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 0) {
-                current_state = MOVE_HARD;
-                setAllLeds(0);
-            }
-            else
-                if (PORTAbits.RA4 == PUSHED && PORTBbits.RB0 == 1) {
-                    current_state = MOVE_EASY;
+            if (PORTAbits.RA4 == PUSHED) {
+                srand(seed_nr);
+                if (PORTBbits.RB0 == 0) {
+                    current_state = MOVE_HARD;
                     setAllLeds(0);
                 }
+                else {
+                    current_state = MOVE_EASY;
+                    setAllLeds(0);
+                } 
+            }
+            
 
             break;
         
         case MOVE_EASY :
             
-            stepper_pulse(1);
+            stepper_pulse(0.8);
+            
+            if (PORTBbits.RB0 == 0)
+                current_state = MOVE_HARD;
+            
             
             if (PORTAbits.RA4 == 0) {
                 if (was_released == TRUE) 
@@ -167,8 +186,6 @@ static void fsm(void) {
                     current_state = RELEASE;
             }
             
-            if (PORTBbits.RB0 == 0)
-                current_state = MOVE_HARD;
             
             break;
         
@@ -176,6 +193,10 @@ static void fsm(void) {
             
             stepper_pulse(hard_speed);
             hard_speed_timer--;
+            
+            if (PORTBbits.RB0 == 1)
+                current_state = MOVE_EASY;
+            
             
             if (was_released == TRUE) {
                 if (PORTAbits.RA4 == 0) {
@@ -194,8 +215,6 @@ static void fsm(void) {
                 current_state = RELEASE;
             }
             
-            if (PORTBbits.RB0 == 1)
-                current_state = MOVE_EASY;
             
             
             break;
@@ -235,16 +254,15 @@ static void fsm(void) {
             else 
                 stepper_direction = -1;
             
-            
             hard_speed_timer = (int)(rand()%1000+100);
-            hard_speed = 1+(rand()%100)/100;
+            hard_speed = 0.7+10*(rand()%100)/100.0;
             
             current_state = MOVE_HARD;
             break;
             
         case FIRE :
             was_released = FALSE;
-            buzz(300,100);
+            //buzz(300,100);
             
             for (char i = 0;i<=16;i++) {
                 if ((float)position >= ((i-1)*steps_per_led+steps_per_led/2) && (float)position <= (i*steps_per_led+steps_per_led/2+1)) {
@@ -262,7 +280,13 @@ static void fsm(void) {
 
         case GAME_LOST :
             setAllLeds(0);
+            LATAbits.LATA2 = 0;
+
+            buzz(800,100);
+            buzz(500,100);
             buzz(300,100);
+            buzz(100,400);
+
             note_new = 0;
             
             current_state = NEW_GAME;
@@ -273,6 +297,8 @@ static void fsm(void) {
             superMario(note_win);
             note_win++;
             LATAbits.LATA1 = 0;
+            LATAbits.LATA2 = 0;
+
             
             if (note_win == last_win_note)  {
                 current_state = NEW_GAME;
@@ -294,9 +320,9 @@ static void stepper_pulse(float speed) {
         LATCbits.LATC7 = 1;
     
     LATCbits.LATC6 = 1;
-    myDelay_us((int)(250/speed));
+    myDelay_us((int)(75/speed));
     LATCbits.LATC6 = 0;
-    myDelay_us((int)(250/speed));
+    myDelay_us((int)(75/speed));
 
     position+= stepper_direction;
     while (position < 0)
@@ -312,7 +338,7 @@ static void go_through_cols(char offset) {
     if (LEDs[offset+2]==1) LATBbits.LATB7 =1;
     if (LEDs[offset+3]==1) LATAbits.LATA0 =1;
 
-    myDelay_us(100);
+    myDelay_us(150);
     
     LATBbits.LATB5 = 0;
     LATBbits.LATB6 = 0;

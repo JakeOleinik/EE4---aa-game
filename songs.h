@@ -40,7 +40,7 @@ unsigned int superMarioNotes[] = {
         NOTE_A7, 0, NOTE_F7, NOTE_G7,
         0, NOTE_E7, 0, NOTE_C7,
         NOTE_D7, NOTE_B6, 0, 0,
-
+        /*
         NOTE_C7, 0, 0, NOTE_G6,
         0, 0, NOTE_E6, 0,
         0, NOTE_A6, 0, NOTE_B6,
@@ -50,6 +50,7 @@ unsigned int superMarioNotes[] = {
         NOTE_A7, 0, NOTE_F7, NOTE_G7,
         0, NOTE_E7, 0, NOTE_C7,
         NOTE_D7, NOTE_B6, 0, 0
+        */
         };
 
 
@@ -68,7 +69,7 @@ unsigned int superMarioDurations[] = {
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
- 
+  /*
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
@@ -78,6 +79,7 @@ unsigned int superMarioDurations[] = {
   12, 12, 12, 12,
   12, 12, 12, 12,
   12, 12, 12, 12,
+  */
 };
 
 

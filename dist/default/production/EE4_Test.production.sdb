@@ -3,8 +3,8 @@
 [d edition pro ]
 [d chip 18F2550 ]
 [d frameptr 4065 ]
-"41 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
-[e E3969 . `uc
+"44 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+[e E3971 . `uc
 CALIBRATION 0
 NEW_GAME 1
 MOVE_EASY 2
@@ -20,8 +20,6 @@ GAME_LOST 9
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 "42 /Applications/microchip/xc8/v1.36/sources/common/altoft.c
 [v ___altoft __altoft `(f  1 e 3 0 ]
-"8 /Applications/microchip/xc8/v1.36/sources/common/awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "8 /Applications/microchip/xc8/v1.36/sources/common/awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
 "32 /Applications/microchip/xc8/v1.36/sources/common/awtoft.c
@@ -48,7 +46,9 @@ GAME_LOST 9
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
 "28 /Applications/microchip/xc8/v1.36/sources/common/lwtoft.c
 [v ___lwtoft __lwtoft `(f  1 e 3 0 ]
-"12 /Applications/microchip/xc8/v1.36/sources/common/rand.c
+"6 /Applications/microchip/xc8/v1.36/sources/common/rand.c
+[v _srand srand `(v  1 e 1 0 ]
+"12
 [v _rand rand `(i  1 e 2 0 ]
 "10 /Applications/microchip/xc8/v1.36/sources/common/sprcadd.c
 [v ___fladd __fladd `(d  1 e 3 0 ]
@@ -70,19 +70,19 @@ GAME_LOST 9
 [v _OpenTimer0 OpenTimer0 `(v  1 s 1 OpenTimer0 ]
 "88 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/func_pwm.c
 [v _OpenTimer1 OpenTimer1 `(v  1 s 1 OpenTimer1 ]
-"60 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"63 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _main main `(v  1 e 1 0 ]
-"72
+"75
 [v _init init `(v  1 s 1 init ]
-"117
+"121
 [v _fsm fsm `(v  1 s 1 fsm ]
-"290
+"316
 [v _stepper_pulse stepper_pulse `(v  1 s 1 stepper_pulse ]
-"309
+"335
 [v _go_through_cols go_through_cols `(v  1 s 1 go_through_cols ]
-"323
+"349
 [v _multiplex multiplex `(v  1 s 1 multiplex ]
-"341
+"367
 [v _setAllLeds setAllLeds `(v  1 s 1 setAllLeds ]
 "13 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
 [v _myDelay_us myDelay_us `(v  1 e 1 0 ]
@@ -134,7 +134,7 @@ GAME_LOST 9
 `uc 1 RB7 1 0 :1:7 
 ]
 "2546
-[s S846 . 1 `uc 1 INT0 1 0 :1:0 
+[s S851 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
@@ -142,11 +142,11 @@ GAME_LOST 9
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S854 . 1 `uc 1 . 1 0 :3:0 
+[s S859 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S857 . 1 `S225 1 . 1 0 `S846 1 . 1 0 `S854 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES857  1 e 1 @3969 ]
+[u S862 . 1 `S225 1 . 1 0 `S851 1 . 1 0 `S859 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES862  1 e 1 @3969 ]
 [s S694 . 1 `uc 1 LATA0 1 0 :1:0 
 `uc 1 LATA1 1 0 :1:1 
 `uc 1 LATA2 1 0 :1:2 
@@ -409,70 +409,73 @@ GAME_LOST 9
 [v _PWM_duty PWM_duty `[1]uc  1 e 1 0 ]
 "23
 [v _counter counter `uc  1 s 1 counter ]
-"19 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"20 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _note_new note_new `ui  1 s 2 note_new ]
 [v _note_win note_win `ui  1 s 2 note_win ]
-"20
-[v _was_released was_released `uc  1 s 1 was_released ]
 "21
-[v _hard_speed_timer hard_speed_timer `ui  1 s 2 hard_speed_timer ]
+[v _was_released was_released `uc  1 s 1 was_released ]
 "22
-[v _hard_speed hard_speed `f  1 s 3 hard_speed ]
+[v _hard_speed_timer hard_speed_timer `ui  1 s 2 hard_speed_timer ]
 "23
-[v _stepper_direction stepper_direction `i  1 s 2 stepper_direction ]
+[v _nr_toggles nr_toggles `uc  1 s 1 nr_toggles ]
 "24
-[v _prev_hall prev_hall `uc  1 s 1 prev_hall ]
+[v _hard_speed hard_speed `f  1 s 3 hard_speed ]
 "25
-[v _LEDs LEDs `[16]uc  1 s 16 LEDs ]
+[v _seed_nr seed_nr `ui  1 s 2 seed_nr ]
 "26
-[v _target target `uc  1 s 1 target ]
+[v _stepper_direction stepper_direction `i  1 s 2 stepper_direction ]
 "27
-[v _position position `i  1 s 2 position ]
+[v _prev_hall prev_hall `uc  1 s 1 prev_hall ]
 "28
-[v _steps_per_led steps_per_led `f  1 s 3 steps_per_led ]
+[v _LEDs LEDs `[16]uc  1 s 16 LEDs ]
 "29
-[v _total_steps total_steps `Cui  1 s 2 total_steps ]
+[v _target target `uc  1 s 1 target ]
 "30
-[v _last_new_note last_new_note `Cui  1 s 2 last_new_note ]
+[v _position position `i  1 s 2 position ]
 "31
+[v _steps_per_led steps_per_led `f  1 s 3 steps_per_led ]
+"32
+[v _total_steps total_steps `Cui  1 s 2 total_steps ]
+"33
+[v _last_new_note last_new_note `Cui  1 s 2 last_new_note ]
+"34
 [v _last_win_note last_win_note `Cui  1 s 2 last_win_note ]
-"41
-[v _current_state current_state `E3969  1 s 1 current_state ]
-[v _state_to_recover state_to_recover `E3969  1 s 1 state_to_recover ]
+"44
+[v _current_state current_state `E3971  1 s 1 current_state ]
 "28 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.h
-[v _superMarioNotes superMarioNotes `[78]ui  1 e 156 0 ]
-"56
-[v _superMarioDurations superMarioDurations `[78]ui  1 e 156 0 ]
-"84
+[v _superMarioNotes superMarioNotes `[47]ui  1 e 94 0 ]
+"57
+[v _superMarioDurations superMarioDurations `[47]ui  1 e 94 0 ]
+"86
 [v _imperialMarchNotes imperialMarchNotes `[36]ui  1 e 72 0 ]
-"91
+"93
 [v _imperialMarchDurations imperialMarchDurations `[36]ui  1 e 72 0 ]
-"98
+"100
 [v _nothingElseMattersNotes nothingElseMattersNotes `[6]ui  1 e 12 0 ]
-"99
+"101
 [v _nothingElseMattersDurations nothingElseMattersDurations `[6]ui  1 e 12 0 ]
-"60 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"63 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"66
+"69
 } 0
-"323
+"349
 [v _multiplex multiplex `(v  1 s 1 multiplex ]
 {
-"339
+"365
 } 0
-"309
+"335
 [v _go_through_cols go_through_cols `(v  1 s 1 go_through_cols ]
 {
 [v go_through_cols@offset offset `uc  1 a 1 wreg ]
 [v go_through_cols@offset offset `uc  1 a 1 wreg ]
-[v go_through_cols@offset offset `uc  1 a 1 69 ]
-"321
+[v go_through_cols@offset offset `uc  1 a 1 7 ]
+"347
 } 0
-"72
+"75
 [v _init init `(v  1 s 1 init ]
 {
-"115
+"119
 } 0
 "39 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/config.c
 [v _hardware_init hardware_init `(v  1 e 1 0 ]
@@ -493,38 +496,38 @@ GAME_LOST 9
 [v ___lwtoft@c c `ui  1 p 2 22 ]
 "31
 } 0
-"117 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"121 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _fsm fsm `(v  1 s 1 fsm ]
 {
-"249
-[v fsm@i_972 i `uc  1 a 1 22 ]
-"217
-[v fsm@i i `uc  1 a 1 21 ]
-"288
+"267
+[v fsm@i_978 i `uc  1 a 1 6 ]
+"236
+[v fsm@i i `uc  1 a 1 5 ]
+"314
 } 0
 "90 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
 [v _superMario superMario `(v  1 e 1 0 ]
 {
-[v superMario@index index `ui  1 p 2 68 ]
+[v superMario@index index `ui  1 p 2 22 ]
 "101
 } 0
 "8 /Applications/microchip/xc8/v1.36/sources/common/lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 {
 "11
-[v ___lwdiv@quotient quotient `ui  1 a 2 18 ]
+[v ___lwdiv@quotient quotient `ui  1 a 2 19 ]
 "12
-[v ___lwdiv@counter counter `uc  1 a 1 20 ]
+[v ___lwdiv@counter counter `uc  1 a 1 18 ]
 "8
 [v ___lwdiv@dividend dividend `ui  1 p 2 14 ]
 [v ___lwdiv@divisor divisor `ui  1 p 2 16 ]
 "31
 } 0
-"290 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"316 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _stepper_pulse stepper_pulse `(v  1 s 1 stepper_pulse ]
 {
-[v stepper_pulse@speed speed `f  1 p 3 66 ]
-"307
+[v stepper_pulse@speed speed `f  1 p 3 4 ]
+"333
 } 0
 "8 /Applications/microchip/xc8/v1.36/sources/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -536,16 +539,22 @@ GAME_LOST 9
 [v ___lwmod@divisor divisor `ui  1 p 2 16 ]
 "26
 } 0
-"341 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
+"6 /Applications/microchip/xc8/v1.36/sources/common/rand.c
+[v _srand srand `(v  1 e 1 0 ]
+{
+[v srand@x x `ui  1 p 2 14 ]
+"9
+} 0
+"367 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/main.c
 [v _setAllLeds setAllLeds `(v  1 s 1 setAllLeds ]
 {
 [v setAllLeds@value value `uc  1 a 1 wreg ]
-"342
+"368
 [v setAllLeds@i i `uc  1 a 1 15 ]
-"341
+"367
 [v setAllLeds@value value `uc  1 a 1 wreg ]
 [v setAllLeds@value value `uc  1 a 1 14 ]
-"344
+"370
 } 0
 "12 /Applications/microchip/xc8/v1.36/sources/common/rand.c
 [v _rand rand `(i  1 e 2 0 ]
@@ -555,30 +564,30 @@ GAME_LOST 9
 "77 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/songs.c
 [v _nothingElseMatters nothingElseMatters `(v  1 e 1 0 ]
 {
-[v nothingElseMatters@index index `ui  1 p 2 68 ]
+[v nothingElseMatters@index index `ui  1 p 2 22 ]
 "87
 } 0
 "26
 [v _buzz buzz `(v  1 e 1 0 ]
 {
 "34
-[v buzz@i i `l  1 a 4 10 ]
+[v buzz@i i `l  1 a 4 16 ]
 "33
-[v buzz@repeats repeats `l  1 a 4 6 ]
+[v buzz@repeats repeats `l  1 a 4 12 ]
 "32
-[v buzz@halfPeriod halfPeriod `ui  1 a 2 14 ]
+[v buzz@halfPeriod halfPeriod `ui  1 a 2 20 ]
 "26
-[v buzz@freq freq `l  1 p 4 0 ]
-[v buzz@duration duration `ui  1 p 2 4 ]
+[v buzz@freq freq `l  1 p 4 4 ]
+[v buzz@duration duration `ui  1 p 2 8 ]
 "41
 } 0
 "13
 [v _myDelay_us myDelay_us `(v  1 e 1 0 ]
 {
 "15
-[v myDelay_us@i i `ui  1 a 2 64 ]
+[v myDelay_us@i i `ui  1 a 2 2 ]
 "13
-[v myDelay_us@us us `ui  1 p 2 62 ]
+[v myDelay_us@us us `ui  1 p 2 0 ]
 "17
 } 0
 "19
@@ -604,26 +613,26 @@ GAME_LOST 9
 [v ___fttol __fttol `(l  1 e 4 0 ]
 {
 "47
-[v ___fttol@lval lval `ul  1 a 4 57 ]
+[v ___fttol@lval lval `ul  1 a 4 69 ]
 "46
-[v ___fttol@exp1 exp1 `uc  1 a 1 61 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 56 ]
+[v ___fttol@exp1 exp1 `uc  1 a 1 73 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 68 ]
 "44
-[v ___fttol@f1 f1 `f  1 p 3 47 ]
+[v ___fttol@f1 f1 `f  1 p 3 59 ]
 "73
 } 0
 "54 /Applications/microchip/xc8/v1.36/sources/common/ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
 {
 "60
-[v ___ftdiv@f3 f3 `f  1 a 3 42 ]
+[v ___ftdiv@f3 f3 `f  1 a 3 54 ]
 "59
-[v ___ftdiv@sign sign `uc  1 a 1 46 ]
-[v ___ftdiv@exp exp `uc  1 a 1 45 ]
-[v ___ftdiv@cntr cntr `uc  1 a 1 41 ]
+[v ___ftdiv@sign sign `uc  1 a 1 58 ]
+[v ___ftdiv@exp exp `uc  1 a 1 57 ]
+[v ___ftdiv@cntr cntr `uc  1 a 1 53 ]
 "54
-[v ___ftdiv@f1 f1 `f  1 p 3 32 ]
-[v ___ftdiv@f2 f2 `f  1 p 3 35 ]
+[v ___ftdiv@f1 f1 `f  1 p 3 44 ]
+[v ___ftdiv@f2 f2 `f  1 p 3 47 ]
 "86
 } 0
 "42 /Applications/microchip/xc8/v1.36/sources/common/altoft.c
@@ -653,10 +662,10 @@ GAME_LOST 9
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 {
 "17
-[v ___wmul@product product `ui  1 a 2 18 ]
+[v ___wmul@product product `ui  1 a 2 38 ]
 "15
-[v ___wmul@multiplier multiplier `ui  1 p 2 14 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 16 ]
+[v ___wmul@multiplier multiplier `ui  1 p 2 34 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 36 ]
 "53
 } 0
 "27 /Applications/microchip/xc8/v1.36/sources/common/lbtoft.c
@@ -672,42 +681,42 @@ GAME_LOST 9
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
 {
 "65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 56 ]
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 54 ]
 "64
-[v ___ftmul@sign sign `uc  1 a 1 60 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 59 ]
-[v ___ftmul@exp exp `uc  1 a 1 55 ]
+[v ___ftmul@sign sign `uc  1 a 1 58 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 57 ]
+[v ___ftmul@exp exp `uc  1 a 1 53 ]
 "62
-[v ___ftmul@f1 f1 `f  1 p 3 46 ]
-[v ___ftmul@f2 f2 `f  1 p 3 49 ]
+[v ___ftmul@f1 f1 `f  1 p 3 44 ]
+[v ___ftmul@f2 f2 `f  1 p 3 47 ]
 "157
 } 0
 "4 /Applications/microchip/xc8/v1.36/sources/common/ftge.c
 [v ___ftge __ftge `(b  1 e 0 0 ]
 {
-[v ___ftge@ff1 ff1 `f  1 p 3 3 ]
-[v ___ftge@ff2 ff2 `f  1 p 3 6 ]
+[v ___ftge@ff1 ff1 `f  1 p 3 0 ]
+[v ___ftge@ff2 ff2 `f  1 p 3 3 ]
 "13
 } 0
 "86 /Applications/microchip/xc8/v1.36/sources/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 {
 "88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 2 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 1 ]
-[v ___ftadd@sign sign `uc  1 a 1 0 ]
+[v ___ftadd@exp1 exp1 `uc  1 a 1 70 ]
+[v ___ftadd@exp2 exp2 `uc  1 a 1 69 ]
+[v ___ftadd@sign sign `uc  1 a 1 68 ]
 "86
-[v ___ftadd@f1 f1 `f  1 p 3 61 ]
-[v ___ftadd@f2 f2 `f  1 p 3 64 ]
+[v ___ftadd@f1 f1 `f  1 p 3 59 ]
+[v ___ftadd@f2 f2 `f  1 p 3 62 ]
 "148
 } 0
 "32 /Applications/microchip/xc8/v1.36/sources/common/awtoft.c
 [v ___awtoft __awtoft `(f  1 e 3 0 ]
 {
 "34
-[v ___awtoft@sign sign `uc  1 a 1 45 ]
+[v ___awtoft@sign sign `uc  1 a 1 43 ]
 "32
-[v ___awtoft@c c `i  1 p 2 42 ]
+[v ___awtoft@c c `i  1 p 2 40 ]
 "42
 } 0
 "62 /Applications/microchip/xc8/v1.36/sources/common/float.c
@@ -728,19 +737,6 @@ GAME_LOST 9
 [v ___awmod@dividend dividend `i  1 p 2 28 ]
 [v ___awmod@divisor divisor `i  1 p 2 30 ]
 "35
-} 0
-"8 /Applications/microchip/xc8/v1.36/sources/common/awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"11
-[v ___awdiv@quotient quotient `i  1 a 2 40 ]
-"12
-[v ___awdiv@sign sign `uc  1 a 1 39 ]
-[v ___awdiv@counter counter `uc  1 a 1 38 ]
-"8
-[v ___awdiv@dividend dividend `i  1 p 2 34 ]
-[v ___awdiv@divisor divisor `i  1 p 2 36 ]
-"42
 } 0
 "76 /Users/Jake/Desktop/GroupT/Semester 4/EE4/EE4_Test/config.c
 [v _interrupt_handler interrupt_handler `II(v  1 e 1 0 ]

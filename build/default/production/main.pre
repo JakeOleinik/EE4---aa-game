@@ -4662,15 +4662,7 @@ unsigned int superMarioNotes[] = {
 0, 2637, 0, 2093,
 2349, 1976, 0, 0,
 
-2093, 0, 0, 1568,
-0, 0, 1319, 0,
-0, 1760, 0, 1976,
-0, 1865, 1760, 0,
-
-1568, 2637, 3136,
-3520, 0, 2794, 3136,
-0, 2637, 0, 2093,
-2349, 1976, 0, 0
+# 54
 };
 
 
@@ -4690,15 +4682,7 @@ unsigned int superMarioDurations[] = {
 12, 12, 12, 12,
 12, 12, 12, 12,
 
-12, 12, 12, 12,
-12, 12, 12, 12,
-12, 12, 12, 12,
-12, 12, 12, 12,
-
-9, 9, 9,
-12, 12, 12, 12,
-12, 12, 12, 12,
-12, 12, 12, 12,
+# 83
 };
 
 
@@ -4867,11 +4851,13 @@ extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupport
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 19 "main.c"
+# 20 "main.c"
 static unsigned int note_new = 0, note_win = 0;
 static unsigned char was_released;
 static unsigned int hard_speed_timer;
+static unsigned char nr_toggles = 0;
 static float hard_speed;
+static unsigned int seed_nr = 0;
 static int stepper_direction;
 static unsigned char prev_hall;
 static unsigned char LEDs[16];
@@ -4890,7 +4876,7 @@ FIRE,
 CHANGE_SPEED,
 LIGHT_UP,
 GAME_WON,
-GAME_LOST } current_state, state_to_recover;
+GAME_LOST } current_state;
 
 
 static void init(void);
@@ -4899,7 +4885,7 @@ static void multiplex(void);
 static void stepper_pulse(float);
 static void setAllLeds(unsigned char);
 
-# 60
+# 63
 void main(void) {
 init();
 while(1) {
@@ -4908,7 +4894,7 @@ multiplex();
 }
 }
 
-# 72
+# 75
 static void init(void) {
 TRISCbits.TRISC6 = 0;
 TRISCbits.TRISC7 = 0;
@@ -4922,6 +4908,7 @@ TRISBbits.TRISB6 = 0;
 TRISBbits.TRISB7 = 0;
 TRISAbits.TRISA0 = 0;
 TRISAbits.TRISA1 = 0;
+TRISAbits.TRISA2 = 0;
 TRISAbits.TRISA3 = 0;
 TRISAbits.TRISA4 = 1;
 TRISAbits.TRISA5 = 1;
@@ -4937,10 +4924,10 @@ LATBbits.LATB6 = 0;
 LATBbits.LATB7 = 0;
 LATAbits.LATA0 = 0;
 LATAbits.LATA1 = 1;
+LATAbits.LATA2 = 0;
 LATAbits.LATA3 = 0;
 
 current_state = CALIBRATION;
-state_to_recover = CALIBRATION;
 
 note_new = 0;
 note_win = 0;
@@ -4963,16 +4950,24 @@ stepper_pulse(1);
 
 
 if (PORTAbits.RA5 != prev_hall) {
-
+prev_hall = PORTAbits.RA5;
+if (nr_toggles == 1) {
 position = 0;
 current_state = NEW_GAME;
+}
+else {
+nr_toggles+=1;
+}
 }
 
 break;
 
 case NEW_GAME :
 
+LATAbits.LATA2 = 1;
 setAllLeds(0);
+seed_nr++;
+seed_nr%=1000;
 
 note_new%=last_new_note;
 was_released = 0;
@@ -4982,21 +4977,28 @@ nothingElseMatters(note_new);
 note_new++;
 
 
-if (PORTAbits.RA4 == 0 && PORTBbits.RB0 == 0) {
+if (PORTAbits.RA4 == 0) {
+srand(seed_nr);
+if (PORTBbits.RB0 == 0) {
 current_state = MOVE_HARD;
 setAllLeds(0);
 }
-else
-if (PORTAbits.RA4 == 0 && PORTBbits.RB0 == 1) {
+else {
 current_state = MOVE_EASY;
 setAllLeds(0);
 }
+}
+
 
 break;
 
 case MOVE_EASY :
 
-stepper_pulse(1);
+stepper_pulse(0.8);
+
+if (PORTBbits.RB0 == 0)
+current_state = MOVE_HARD;
+
 
 if (PORTAbits.RA4 == 0) {
 if (was_released == 1)
@@ -5007,8 +5009,6 @@ if (was_released == 0)
 current_state = RELEASE;
 }
 
-if (PORTBbits.RB0 == 0)
-current_state = MOVE_HARD;
 
 break;
 
@@ -5016,6 +5016,10 @@ case MOVE_HARD :
 
 stepper_pulse(hard_speed);
 hard_speed_timer--;
+
+if (PORTBbits.RB0 == 1)
+current_state = MOVE_EASY;
+
 
 if (was_released == 1) {
 if (PORTAbits.RA4 == 0) {
@@ -5034,8 +5038,6 @@ else {
 current_state = RELEASE;
 }
 
-if (PORTBbits.RB0 == 1)
-current_state = MOVE_EASY;
 
 
 break;
@@ -5075,16 +5077,15 @@ stepper_direction = 1;
 else
 stepper_direction = -1;
 
-
 hard_speed_timer = (int)(rand()%1000+100);
-hard_speed = 1+(rand()%100)/100;
+hard_speed = 0.7+10*(rand()%100)/100.0;
 
 current_state = MOVE_HARD;
 break;
 
 case FIRE :
 was_released = 0;
-buzz(300,100);
+
 
 for (char i = 0;i<=16;i++) {
 if ((float)position >= ((i-1)*steps_per_led+steps_per_led/2) && (float)position <= (i*steps_per_led+steps_per_led/2+1)) {
@@ -5102,7 +5103,13 @@ break;
 
 case GAME_LOST :
 setAllLeds(0);
+LATAbits.LATA2 = 0;
+
+buzz(800,100);
+buzz(500,100);
 buzz(300,100);
+buzz(100,400);
+
 note_new = 0;
 
 current_state = NEW_GAME;
@@ -5113,6 +5120,8 @@ note_new = 0;
 superMario(note_win);
 note_win++;
 LATAbits.LATA1 = 0;
+LATAbits.LATA2 = 0;
+
 
 if (note_win == last_win_note) {
 current_state = NEW_GAME;
@@ -5134,9 +5143,9 @@ else
 LATCbits.LATC7 = 1;
 
 LATCbits.LATC6 = 1;
-myDelay_us((int)(250/speed));
+myDelay_us((int)(75/speed));
 LATCbits.LATC6 = 0;
-myDelay_us((int)(250/speed));
+myDelay_us((int)(75/speed));
 
 position+= stepper_direction;
 while (position < 0)
@@ -5152,7 +5161,7 @@ if (LEDs[offset+1]==1) LATBbits.LATB6 =1;
 if (LEDs[offset+2]==1) LATBbits.LATB7 =1;
 if (LEDs[offset+3]==1) LATAbits.LATA0 =1;
 
-myDelay_us(100);
+myDelay_us(150);
 
 LATBbits.LATB5 = 0;
 LATBbits.LATB6 = 0;
